@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <link rel="stylesheet" href="services.css">
+    
+</head>
+<body>
+    <button class="scroll-btn" id="scrollBtn" onclick="scrollToTop()">↑</button>
+    <script>
+        const scrollBtn = document.getElementById("scrollBtn");
+    
+        // Show button when user scrolls down
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 200) {
+            scrollBtn.classList.add("show");
+          } else {
+            scrollBtn.classList.remove("show");
+          }
+        });
+    
+        // Scroll to top function
+        function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+           // Toggle navbar links for mobile view
+    function toggleMenu() {
+      const navbarLinks = document.querySelector('.navbar-links');
+      navbarLinks.classList.toggle('active');
+    }
+     
+       </script>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <h2>Hisson Contractors Pvt</h2>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <div class="navbar-links">
+        <a href="home.html">Home</a>
+        <a href="about.html" >About Us</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+
+
+      <div class="shop-header">
+      <div>
+        <h1>Welcome to your number one Service Company </h1>
+      </div>
+      </div>
+      <!-- Hero Section -->
+      <div class="container">
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-bar" placeholder="Search headers...">
+          <button class="search-btn" onclick="performSearch()">Search</button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+      </div>
+
+
+
+      <script>
+        function performSearch() {
+          const input = document.getElementById('searchInput').value.toLowerCase();
+          const headers = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+          const resultsContainer = document.getElementById('searchResults');
+          resultsContainer.innerHTML = ''; // Clear previous results
+    
+          let foundResults = false;
+    
+          headers.forEach(header => {
+            if (header.textContent.toLowerCase().includes(input)) {
+              foundResults = true;
+              const result = document.createElement('div');
+              result.className = 'result';
+              result.textContent = header.textContent;
+              result.addEventListener('click', () => {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              });
+              resultsContainer.appendChild(result);
+            }
+          });
+    
+          if (!foundResults) {
+            resultsContainer.innerHTML = '<div class="result">No headers found</div>';
+          }
+        }
+      </script>
+      <div class="hero-container">
+        <h1>Our Services</h1>
+        
+     </div>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="service-card">
+            <img src="image2\wall paint2.jpg" alt="Service Image 3">
+            <h3>WALL PAINTING</h3>
+            <p>Transform Your Walls with Expert Painting Services!
+
+                Whether you’re looking for a fresh coat to brighten your space, intricate designs to make your walls stand out, or professional craftsmanship that lasts, We've got you covered!</p> 
+            <button class="btn" onclick="openDialog('Wall Painting')">Acquire Services</button>
+        </div>
+
+        <div class="service-card">
+            <img src="images home\roofing service.jpg" alt="Service Image 3">
+            <h3>ROOFING</h3>
+            <p>We provide all roofing solutions starting from timber works. Roof with us Today! and see the most durable and stylish roofs </p>
+            <button class="btn" onclick="openDialog('Roofing')">Acquire Service</button>
+        </div>
+        <div class="service-card">
+          <img src="images home\Installation-Panels.jpg" alt="Service Image 3">
+          <h3>SOLAR INSTALLATION</h3>
+          <p>We offer solar installation  services. Our services ensure security for your solar panels and we gaurantee faultless functionality</p>
+          <button class="btn" onclick="openDialog('Solar Installation')">Acquire Service</button>
+      </div>
+       
+        <div class="service-card">
+            <img src="image2\tile install.jpg" alt="Service Image 3">
+            <h3>Tile Installation</h3>
+            <p>Laying tiles for floors, walls, or other surfaces in homes, offices, or commercial spaces.</p>
+            <button class="btn" onclick="openDialog('Tile Installation')">Acquire Service</button>
+        </div>
+
+        <div class="service-card">
+            <img src="image2\replace tile.jpg" alt="Service Image 3">
+            <h2>Tile Replacement and Repairs</h2>
+            <p>Fixing damaged tiles or replacing old ones with new designs.</p>
+            <button class="btn" onclick="openDialog('Tile Replacement and Repairs')">Acquire Service</button>
+        </div>
+
+        <div class="service-card">
+            <img src="image2\custom designs.jpg" alt="Service Image 3">
+            <h2>Custom Designs</h2>
+            <p> Offering unique patterns, mosaics, or tailored layouts based on clients' preferences.</p>
+            <button class="btn" onclick="openDialog('Tile Custom Designs')" >Acquire Service</button>
+        </div>
+
+        <div class="service-card">
+            <img src="image2\waterproofing.jpg" alt="Service Image 3">
+            <h2>Waterproofing Services</h2>
+            <p> Applying waterproof membranes before tiling in areas like bathrooms or outdoor spaces.</p>
+            <button class="btn" onclick="openDialog('Water Proofing Services')">Acquire Service</button>
+        </div>
+
+        <div class="service-card">
+            <img src="image2\tile consultancy.jpg" alt="Service Image 3">
+            <h2>Consultation Services</h2>
+            <p>Advising on tile selection, layout, and design to suit individual tastes or project needs.</p>
+            <button class="btn"onclick="openDialog('Consultation Services')">Acquire service</button>
+        </div>
+
+        <div class="service-card">
+            <img src="image2\instal plumbing.jpg" alt="Service Image 3">
+            <h2>Installation</h2>
+            <p>Setting up new plumbing systems, fixtures, faucets, toilets, showers, water heaters, or
+                 kitchen appliances like dishwashers.
+            </p>
+            <button class="btn"onclick="openDialog('Plumbing: House Installation')">Acquire service</button>
+       
+        </div>
+
+        <div class="service-card">
+            <img src="image2\pipe repair.jpg" alt="Service Image 3">
+            <h2>Repairs</h2>
+            <p>Fixing leaks, broken pipes, clogged drains, or malfunctioning fixtures.</p>
+            <button class="btn"onclick="openDialog('Plumbing Repairs')">Acquire service</button>
+       
+        </div>
+
+        <div class="service-card">
+            <img src="image2\drain cleaning.jpg" alt="Service Image 3">
+            <h2>Drain Cleaning</h2>
+            <p> Clearing blockages in sinks, toilets, or main sewer lines.</p>
+            <button class="btn"onclick="openDialog('Drain Cleaning')">Acquire service</button>
+       
+        </div>
+
+        <div class="service-card">
+            <img src="image2\pemegency.jpg" alt="Service Image 3">
+            <h2>Emergency Plumbing</h2>
+            <p> Handling urgent issues like burst pipes, overflowing toilets, or sudden water heater failures.</p>
+            <button class="btn"onclick="openDialog('Emegency Plumbing')">Acquire service</button>
+       
+        </div>
+
+        <div class="service-card">
+            <img src="image2\leakdetection.jpeg" alt="Service Image 3">
+            <h2>Leak Detection</h2>
+            <p>Identifying hidden leaks using specialized equipment.</p>
+            <button class="btn"onclick="openDialog('Leak Detection')">Acquire service</button>
+       
+        </div>
+       
+        </div>
+
+    </section>
+    <!-- Call-to-Action Section -->
+<div class="cta-container">
+    <h2>Join Us Today</h2>
+    <p>Discover what makes us unique and why our services are the best choice for you.</p>
+    <p>Our team is dedicated to providing innovative solutions to meet your needs.</p>
+    <p>Stay connected and see how we can help you achieve your goals.</p>
+    <div class="cta-icons">
+        <img src="image2\R.png" alt="Icon 1" />
+        <img src="images home\WAicon.png" alt="Icon 2" />
+       <p>call/Whatsapp: 071 269 6206</p> 
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer>
+        <footer>
+            <div style="text-align: center; padding: 20px; background: #000; color: #fff;">
+              <p>&copy; 2025 Hisson Contractors Pvt. All rights reserved.</p>
+              <p>
+                <a href="Home.html" style="color: #f1c40f; text-decoration: none;">Home</a> |
+                <a href="about.html" style="color: #f1c40f; text-decoration: none;">About Us</a> |
+                <a href="services.html" style="color: #f1c40f; text-decoration: none;">Services</a> |
+                <a href="contact.html" style="color: #f1c40f; text-decoration: none;">Contact</a>
+              </p>
+              <p>Follow us: 
+                <a href="https://facebook.com/yourcompany" target="_blank" style="color: #f1c40f; text-decoration: none;">Facebook</a> |
+                <a href="https://twitter.com/yourcompany" target="_blank" style="color: #f1c40f; text-decoration: none;">Twitter</a> |
+                <a href="https://instagram.com/yourcompany" target="_blank" style="color: #f1c40f; text-decoration: none;">Instagram</a>
+              </p>
+            </div>
+          </footer>
+    </footer>
+    <div class="dialog" id="dialog">
+        <div class="dialog-header">
+            <h2>Enter your details</h2>
+        </div>
+        <div class="dialog-content">
+            <form id="popup-form"id="service-form" onsubmit="sendMessage(event)">
+              
+                <label for="telephone">Full Name:</label>
+                <input 
+                type="text" 
+                id="full-name" 
+                name="full-name" 
+                required 
+                oninput="convertToUpperCase(event)" id="userInput">
+            
+                <label for="telephone">Telephone Number:</label>
+            <input 
+                type="text" 
+                id="telephone" 
+                name="telephone" 
+                required 
+                oninput="validateTelephone(event)" 
+                maxlength="14"
+                minlength="10" id="userInput">
+            <small id="telephone-error" style="color: red; display: none;">
+                Telephone Number must be numeric and between 10-14 characters.
+            </small>
+            <label for="address">Address:</label>
+            <input 
+                type="text" 
+                id="address" 
+                name="address" 
+                required 
+                oninput="validateAddress(event)"
+                minlength="6" id="userInput" id="userInput">
+            <small id="address-error" style="color: red; display: none;">
+                Address must contain only numbers and letters, and be at least 6 characters long.
+            </small>
+                <input type="text" id="service-required" name="service-required" placeholder="service-required" value="Predefined Service" readonly id="userInput">
+                <label for="current-date">Date:</label>
+                <input 
+                    type="text" 
+                    id="current-date" 
+                    readonly id="userInput" id="userInput">
+                
+            
+                <div class="dialog-footer">
+                <button type="button" class="cancel-btn" onclick="closeDialog()">Cancel</button>
+                <button type="submit" form="popup-form" class="submit-btn">Submit</button>
+                 </div>
+            </form>
+        </div>
+    </div>
+        <div class="confirmation" id="confirmation">
+            Data successfully sent! For quicker response please call +263 71 269 6206
+        </div>
+        
+        <script>
+          const sanitizeInput = (input) => {
+              return input.replace(/<script.*?>.*?<\/script>/gi, '');
+          };
+      
+          function handleFormSubmit() {
+              const userInput = document.getElementById('userInput').value;
+              const sanitizedInput = sanitizeInput(userInput);
+              console.log(sanitizedInput);
+          }
+      </script>
+      
+   
+    <script src="services.js"></script>
+</body>
+</html>

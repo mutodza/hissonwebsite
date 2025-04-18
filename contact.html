@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contacts</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Hisson Contractors Pvt</h2>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="navbar-links">
+          <a href="home.html">Home</a>
+          <a href="about.html" >About Us</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="header">
+            <h1>Contact Us</h1>
+        </div>
+        <div class="icon">
+        </div>
+        <div class="info-boxes">
+            <div class="info-box">
+                <img src="images home\fbicon.png" alt="Full Name Icon" class="info-icon">
+                <p>Facebook</p>
+              
+            </div>
+            <div class="info-box">
+                <img src="image2\email.png" alt="Telephone Icon" class="info-icon">
+                <p>Email</p>
+                
+            </div>
+            <div class="info-box">
+                <img src="images home\twitter-icon.png" alt="Address Icon" class="info-icon">
+                <p>Twitter</p>
+                
+            </div>
+            <div class="info-box">
+                <img src="images home\WAicon.png" alt="Service Required Icon" class="info-icon">
+                <p>Whatsapp</p>
+                
+            </div>
+        </div>
+         <!-- Floating 'Back' Button -->
+    <a href="home.html" class="floating-back-button">Back</a>
+
+    <!-- Central Panel -->
+    <a href="home.html" class="floating-back-button">Back</a>
+
+    <!-- Central Panel -->
+    <div class="panel">
+        <h2>Contact Us</h2>
+        <form action="send_email.php" method="POST">
+        <input type="text" placeholder="Name" id="userInput">
+        <input type="email" placeholder="Email" id="userInput">
+        <input type="text" placeholder="Phone Number" id="userInput">
+        <input type="text" placeholder="Subject" id="userInput">
+        <input type="text" placeholder="Message" id="userInput">
+        <button type="submit">Submit</button>
+        </form>
+    </div>
+        <div class="footer-text">
+            <p>Thank you for reaching out to us!</p>
+        </div>
+        <script>
+            // Toggle navbar links for mobile view
+            function toggleMenu() {
+              const navbarLinks = document.querySelector('.navbar-links');
+              navbarLinks.classList.toggle('active');
+            }
+            const navbar = document.querySelectorAll('navbar-links a');
+
+navbar.forEach(link => {
+  link.addEventListener('focus', (event) => {
+    event.target.style.outline = 'none';
+  });
+});
+
+        
+            // Highlight the current page in the navbar
+            document.addEventListener('DOMContentLoaded', () => {
+              const currentPage = window.location.href;
+              const navLinks = document.querySelectorAll('.navbar a');
+              navLinks.forEach(link => {
+                if (link.href === currentPage) {
+                  link.classList.add('active');
+                }
+              });
+            });
+            
+    const sanitizeInput = (input) => {
+        return input.replace(/<script.*?>.*?<\/script>/gi, '');
+    };
+
+    function handleFormSubmit() {
+        const userInput = document.getElementById('userInput').value;
+        const sanitizedInput = sanitizeInput(userInput);
+        console.log(sanitizedInput);
+    }
+
+
+    </script>
+      </body>
+      </html>
+      
+    

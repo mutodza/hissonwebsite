@@ -1,0 +1,580 @@
+/* Reset styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar styling */
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to right, #f39c12, #f1c40f); /* Gradient Background */
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a:focus{
+    outline: none;
+  }
+  
+.logo img {
+    height: 50px;
+}
+
+/* Toggle Button */
+.toggle-button {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Nav Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; /* Custom Font */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.nav-links a .active {
+    text-decoration: none;
+    color: #000000;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; /* Custom Font */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #eeeeee;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .toggle-button {
+        display: block;
+    }
+
+    .nav-links {
+        display: none; /* Hide nav links by default */
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #333;
+        width: 200px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: #f39c12; /* Scroll indicator color */
+    width: 0%;
+    z-index: 1000;
+}
+
+/* Scroll Indicator Animation */
+body {
+    scroll-behavior: smooth;
+}
+
+/* Hover animation: sliding underline */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #f39c12;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Full width underline on hover */
+}
+
+.nav-links a:hover {
+    color: #f39c12; /* Highlight color */
+}
+
+.nav-links a.active {
+        background-color: #e1630a; /* Blue background for active link */
+        color: #fff; /* White text for contrast */
+        text-decoration: underline; /* Adds underlining for active link */
+        border-radius: 5px;
+    }
+
+/* Animated menu for small screens */
+.nav-links.active {
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    animation: slide-in 0.5s ease;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .toggle-button {
+        display: block;
+    }
+
+    .nav-links {
+        display: none; /* Hidden by default on small screens */
+        background-color: #fff;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 200px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin-left: 0;
+        padding: 10px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-links a {
+        font-size: 16px;
+    }
+}
+
+/* Back-to-Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    font-size: 18px;
+}
+
+#back-to-top:hover {
+    background-color: #e67e22;
+}
+/* Carousel styling */
+.carousel {
+    width: 100%;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    height: 500px; /* Maintains the aspect ratio */
+    object-fit: cover; /* Ensures the image covers the container without leaving empty space */
+    display: block; /* Removes any unwanted space below the image */
+  }
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+    display: none; /* Hide all slides by default */
+}
+
+.slide.active {
+    display: block; /* Show the active slide */
+}
+
+.slide img {
+    width: 100%;
+    height: 500px;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Grey overlay */
+    z-index: 1;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
+
+.content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.content h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+.cta-button {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px; /* No corners */
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.1); /* Zoom effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Glow effect */
+}/* New Container Section Styling */
+.image-container {
+    background-image: url('background.jpg'); /* Replace with your background image path */
+    background-size: cover;
+    background-position: center;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.item {
+    text-align: center;
+    animation: fade-in 1s ease-in-out;
+}
+
+.item img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Rounded images */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item img:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow effect */
+}
+
+.item h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #000000; /* Labels placed below the images */
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Responsive Design */
+
+/* Medium Screens (Tablets) */
+@media screen and (max-width: 768px) {
+    .carousel {
+        max-width: 90%; /* Adjust carousel width */
+    }
+
+    .content h1, .content h2, .content p {
+        font-size: 16px; /* Adjust text sizes */
+    }
+
+    .item img {
+        width: 90%; /* Adjust image size */
+        height: 120px;
+    }
+}
+
+/* Small Screens (Smartphones) */
+@media screen and (max-width: 480px) {
+    .carousel {
+        max-width: 100%; /* Full-width for small screens */
+    }
+
+    .content h1, .content h2, .content p {
+        font-size: 14px; /* Adjust text sizes further */
+    }
+
+    .item img {
+        width: 100px; /* Smaller image size */
+        height: 100px;
+    }
+
+    .image-container {
+        flex-direction: column; /* Stack items vertically */
+        gap: 15px; /* Spacing between stacked items */
+    }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #f39c12;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    z-index: 9999;
+}
+
+/* Loading Spinner Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    color: #f39c12;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #fff;
+}
+
+/* Carousel Navigation */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+/* Hover Effect for Navigation Links */
+.nav-links a:hover {
+    background-color: #f39c12;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Parallax Effect */
+.image-container {
+    background-attachment: fixed; /* Parallax Effect */
+    background-position: center;
+    background-size: cover;
+}
+
+/* Responsive Features */
+@media screen and (max-width: 768px) {
+    .carousel-control {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .dark-mode-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .social-icons a {
+        font-size: 16px;
+    }
+
+    .carousel-control {
+        font-size: 12px;
+        padding: 4px;
+    }
+}
+/* Dark Mode Styling */
+body.dark-mode {
+    background-color: #222; /* Dark background */
+    color: #eee; /* Light text color */
+}
+
+.navbar.dark-mode {
+    background-color: #333; /* Dark navbar background */
+    color: #fff; /* Light navbar text */
+}
+
+footer.dark-mode {
+    background-color: #444; /* Dark footer background */
+    color: #fff; /* Light footer text */
+}
+/* About & Contact Section */
+/* About & Contact Section */
+.about-container {
+    background: linear-gradient(to bottom, #f39c12, #f1c40f); /* Gradient background for a vibrant look */
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 4px solid #e67e22; /* Stylish border at the top */
+    border-bottom: 4px solid #e67e22; /* Stylish border at the bottom */
+    animation: fade-in 1s ease-in-out; /* Fade-in animation for smooth loading */
+}
+
+.about-content h2 {
+    font-family: 'Poppins', sans-serif; /* Modern, sleek font */
+    font-size: 36px;
+    color: #fff; /* Bright text to contrast with background */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+.about-content p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.8; /* Improves readability */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.about-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase; /* All caps for emphasis */
+    letter-spacing: 1px;
+}
+
+.about-content ul {
+    list-style: none;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #444; /* Darker text for contrast */
+    margin-top: 20px;
+}
+
+.about-content ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    transition: transform 0.3s, color 0.3s; /* Add smooth effects */
+}
+
+/* Hover effect for list items */
+.about-content ul li:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    color: #f39c12; /* Highlight color */
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
